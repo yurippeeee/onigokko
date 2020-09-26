@@ -1890,6 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack_collision_flag: 0
+  text: {fileID: 1389953252}
 --- !u!135 &174647898
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1901,7 +1902,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &174647899
 Transform:
@@ -3603,7 +3604,6 @@ GameObject:
   - component: {fileID: 380723013}
   - component: {fileID: 380723012}
   - component: {fileID: 380723011}
-  - component: {fileID: 380723010}
   - component: {fileID: 380723009}
   - component: {fileID: 380723008}
   m_Layer: 0
@@ -3639,22 +3639,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.6
+  m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &380723010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380723007}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad9345e9257fb14abed1645e1ae7da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &380723011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3662,16 +3650,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380723007}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c27dadeebea64145bec6d05a5688335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9
-  speed: 6
-  jumpSpeed: 4
-  rotateSpeed: 1
-  enemyhit: {fileID: 174647896}
+  speed: 5
+  jumpSpeed: 9
+  rotateSpeed: 3
+  ogre: 0
+  player_exist: 1
+  enemyhit: {fileID: 0}
 --- !u!143 &380723012
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5153,6 +5143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack_collision_flag: 0
+  text: {fileID: 1389953252}
 --- !u!135 &506968695
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5164,7 +5155,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &506968696
 Transform:
@@ -7850,7 +7841,6 @@ GameObject:
   - component: {fileID: 728973964}
   - component: {fileID: 728973963}
   - component: {fileID: 728973962}
-  - component: {fileID: 728973961}
   - component: {fileID: 728973960}
   - component: {fileID: 728973959}
   m_Layer: 0
@@ -7886,22 +7876,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.6
+  m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &728973961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728973958}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad9345e9257fb14abed1645e1ae7da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &728973962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7909,16 +7887,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728973958}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c27dadeebea64145bec6d05a5688335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9
-  speed: 6
-  jumpSpeed: 4
-  rotateSpeed: 1
-  enemyhit: {fileID: 1202641013}
+  speed: 5
+  jumpSpeed: 9
+  rotateSpeed: 3
+  ogre: 0
+  player_exist: 1
+  enemyhit: {fileID: 0}
 --- !u!143 &728973963
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9115,6 +9095,8 @@ MonoBehaviour:
   speed: 0
   jumpSpeed: 0
   rotateSpeed: 0
+  ogre: 0
+  player_exist: 1
   enemyhit: {fileID: 0}
 --- !u!137 &863955008
 SkinnedMeshRenderer:
@@ -10996,7 +10978,6 @@ GameObject:
   - component: {fileID: 1043631537}
   - component: {fileID: 1043631536}
   - component: {fileID: 1043631535}
-  - component: {fileID: 1043631534}
   - component: {fileID: 1043631533}
   - component: {fileID: 1043631532}
   m_Layer: 0
@@ -11032,22 +11013,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.6
+  m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1043631534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043631531}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad9345e9257fb14abed1645e1ae7da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1043631535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11055,16 +11024,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043631531}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c27dadeebea64145bec6d05a5688335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9
-  speed: 6
-  jumpSpeed: 4
-  rotateSpeed: 1
-  enemyhit: {fileID: 506968693}
+  speed: 5
+  jumpSpeed: 9
+  rotateSpeed: 3
+  ogre: 0
+  player_exist: 1
+  enemyhit: {fileID: 0}
 --- !u!143 &1043631536
 CharacterController:
   m_ObjectHideFlags: 0
@@ -13091,6 +13062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack_collision_flag: 0
+  text: {fileID: 1389953252}
 --- !u!135 &1202641015
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13102,7 +13074,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1202641016
 Transform:
@@ -14690,6 +14662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99b9264aa003a5408ad7341e5992d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_exit_num: 4
   GameEnd_text: {fileID: 811022970}
 --- !u!114 &1389953255
 MonoBehaviour:
@@ -15894,6 +15867,8 @@ MonoBehaviour:
   speed: 0
   jumpSpeed: 0
   rotateSpeed: 0
+  ogre: 0
+  player_exist: 1
   enemyhit: {fileID: 0}
 --- !u!137 &1495044367
 SkinnedMeshRenderer:
@@ -17030,6 +17005,8 @@ MonoBehaviour:
   speed: 0
   jumpSpeed: 0
   rotateSpeed: 0
+  ogre: 0
+  player_exist: 1
   enemyhit: {fileID: 0}
 --- !u!137 &1557728805
 SkinnedMeshRenderer:
@@ -24063,7 +24040,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh82786
+  m_Name: pb_Mesh32482
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -28402,7 +28379,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8544962241731798537
 GameObject:
@@ -28435,6 +28412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack_collision_flag: 0
+  text: {fileID: 1389953252}
 --- !u!1 &8544962241731798539
 GameObject:
   m_ObjectHideFlags: 0
@@ -29503,8 +29481,8 @@ GameObject:
   - component: {fileID: 8544962241724535867}
   - component: {fileID: 8544962241731798672}
   - component: {fileID: 8544962241731798670}
-  - component: {fileID: 8544962241731798674}
   - component: {fileID: 8544962241731798676}
+  - component: {fileID: 8544962241731798678}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -29525,10 +29503,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 9
-  speed: 6
-  jumpSpeed: 4
-  rotateSpeed: 1
-  enemyhit: {fileID: 8544962241731798535}
+  speed: 5
+  jumpSpeed: 6
+  rotateSpeed: 2
+  ogre: 0
+  player_exist: 1
+  enemyhit: {fileID: 0}
 --- !u!1 &8544962241731798671
 GameObject:
   m_ObjectHideFlags: 0
@@ -29579,18 +29559,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8544962241731798674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8544962241731798669}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad9345e9257fb14abed1645e1ae7da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8544962241731798675
 GameObject:
   m_ObjectHideFlags: 0
@@ -29617,8 +29585,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.6
+  m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8544962241731798677
@@ -29637,6 +29605,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &8544962241731798678
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544962241731798669}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &8544962241731798679
 GameObject:
   m_ObjectHideFlags: 0
@@ -31023,6 +31007,8 @@ MonoBehaviour:
   speed: 0
   jumpSpeed: 0
   rotateSpeed: 0
+  ogre: 0
+  player_exist: 1
   enemyhit: {fileID: 0}
 --- !u!1 &8544962241731799029
 GameObject:

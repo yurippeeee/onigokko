@@ -7,7 +7,7 @@ public class EnemyHit : MonoBehaviour
 {
     float damage = 0.34f;
     public bool attack_collision_flag = false;
-
+    public GameObject text;
     
     //public GameObject hpbar;
 
@@ -19,9 +19,12 @@ public class EnemyHit : MonoBehaviour
         {
             if(attack_collision_flag == false)
             {
-                other.gameObject.transform.Find("HPUI").transform.Find("HPBar").GetComponent<Slider>().value -= damage;
-                if (other.gameObject.transform.Find("HPUI").transform.Find("HPBar").GetComponent<Slider>().value <= 0)
+                other.transform.Find("HPUI").transform.Find("HPBar").GetComponent<Slider>().value -= damage;
+                if (other.transform.Find("HPUI").transform.Find("HPBar").GetComponent<Slider>().value <= 0)
                 {
+                    text.GetComponent<Timer>().player_exit_num -= 1;
+                    other.gameObject.GetComponent<PlayerMove>().player_exist = false;
+                    
                     Destroy(other.gameObject);
                 }
                 attack_collision_flag = true;
