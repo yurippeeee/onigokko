@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/takuya/Documents/onigokko/build/onigokko.exe
+C:/Users/tslab/Documents/onigokko/build/onigokko.exe
 SceneListBegin?
 Assets/Start_Scene.unity
 Assets/Stage_Scene.unity
@@ -179,6 +179,6 @@ d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Attack
 df434544c9f7b33d1cc7e635b180d279 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
-1d6541ae9b4d1edd3c83a4a84f7e9f4b Assembly-CSharp.dll:.EnemyHit
+c1fc5143d7c764b3269636fe01a3fed6 Assembly-CSharp.dll:.EnemyHit
 90ba994ca8ca0d666933e9964ea73d4d Assembly-CSharp.dll:.PlayerMove
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
