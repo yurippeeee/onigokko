@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class NetworkPlayerCheck : MonoBehaviourPunCallbacks
 {
     bool is_first_proc = true;
-    // Start is called before the first frame update
+
     void Start()
     {
         //　自分で操作する以外のキャラクターの不要な機能は使えないようにしておく

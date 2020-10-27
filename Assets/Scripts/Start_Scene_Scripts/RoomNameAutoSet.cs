@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class RoomNameAutoSet : MonoBehaviour
 {
-    // Start is called before the first frame update
     InputField RoomName;
     void Start()
     {

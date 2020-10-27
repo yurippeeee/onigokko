@@ -9,13 +9,13 @@ using Photon.Realtime;
 
 public static class Define
 {
-    public static readonly int NUM_OF_GAME_MAX = 2;
+    public static readonly int MAX_NUM_OF_GAME = 2;  //鬼を入れ替える最大回数(これを超えても決着つかないと引き分け)
 }
 
 public class Timer : MonoBehaviourPunCallbacks
 {
     float measure_time = 20;
-    int num_of_game_count = Define.NUM_OF_GAME_MAX;    //鬼を入れ替える最大回数(これを超えても決着つかないと引き分け)
+    int num_of_game_count = Define.MAX_NUM_OF_GAME;
     int game_state=0;
     int player_number=0;
     bool is_first_loop = true;

@@ -15,21 +15,19 @@ public class PlayerMove : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
 
     //右足のコライダー
-    Collider FootCollider;
+    Collider RightFootCollider;
     EnemyHit EnemyHit;
 
-    // Start is called before the first frame update
     void Start()
     {
         CharacterController = GetComponent<CharacterController>();
         Animator = GetComponent<Animator>();
         //右足のコライダーを取得
-        FootCollider = transform.Find("Character1_Reference").transform.Find("Character1_Hips").transform.Find("Character1_RightUpLeg").transform.Find("Character1_RightLeg").transform.Find("Character1_RightFoot").transform.Find("Character1_RightToeBase").GetComponent<SphereCollider>();
+        RightFootCollider = transform.Find("Character1_Reference").transform.Find("Character1_Hips").transform.Find("Character1_RightUpLeg").transform.Find("Character1_RightLeg").transform.Find("Character1_RightFoot").transform.Find("Character1_RightToeBase").GetComponent<SphereCollider>();
         EnemyHit = transform.Find("Character1_Reference").transform.Find("Character1_Hips").transform.Find("Character1_RightUpLeg").transform.Find("Character1_RightLeg").transform.Find("Character1_RightFoot").transform.Find("Character1_RightToeBase").GetComponent<EnemyHit>();
-        FootCollider.enabled = false;
+        RightFootCollider.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (is_ogre == true)
@@ -39,7 +37,7 @@ public class PlayerMove : MonoBehaviour
             {
                 Animator.SetBool("Hikick", true);
                 EnemyHit.attack_collision_flag = false;
-                FootCollider.enabled = true;
+                RightFootCollider.enabled = true;
             }
         }
         if (Input.GetKey(KeyCode.W))
