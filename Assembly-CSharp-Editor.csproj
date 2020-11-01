@@ -715,6 +715,10 @@
       <Project>{336EB666-7E80-8C43-A2D2-BAD4EE443E30}</Project>
       <Name>PunDemos.DemoSlotcarEditor</Name>
     </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{FC033E05-8941-D093-8294-A96E93973C68}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
       <Project>{043CE36A-521C-D99E-A41A-2A3E533B9068}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>

@@ -41,6 +41,7 @@ public class Timer : MonoBehaviourPunCallbacks
                 {
                     string number = (i+1).ToString();
                     player[i] = GameObject.Find("Player" + number + "(Clone)");
+                    player[i].transform.Find("Character1_Reference").transform.Find("Character1_Hips").transform.Find("Character1_RightUpLeg").transform.Find("Character1_RightLeg").transform.Find("Character1_RightFoot").transform.Find("Character1_RightToeBase").GetComponent<SphereCollider>().enabled = false;
                 }
                 is_first_loop = false;
             }
@@ -57,6 +58,8 @@ public class Timer : MonoBehaviourPunCallbacks
                         break;
                     }
                     player[player_number].GetComponent<PlayerMove>().is_ogre = true;
+                    player[player_number].transform.Find("HPUI").transform.Find("is_ogre").GetComponent<Text>().text = "鬼";
+                    player[player_number].GetComponent<CapsuleCollider>().enabled = false;
                     Destroy(player[player_number].GetComponent<Rigidbody>());
                     game_state = 1;
                     measure_time = 20;
@@ -90,10 +93,12 @@ public class Timer : MonoBehaviourPunCallbacks
                             Game_Center_Text.GetComponent<Text>().text = "鬼の交代";
                         }
 
+                        player[player_number].transform.Find("HPUI").transform.Find("is_ogre").GetComponent<Text>().text = "";
                         player[player_number].AddComponent<Rigidbody>();
                         player[player_number].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                         player[player_number].GetComponent<PlayerMove>().is_ogre = false;
                         player[player_number].GetComponent<Rigidbody>().isKinematic = false;
+                        player[player_number].GetComponent<CapsuleCollider>().enabled = true;
 
                     }
                     break;

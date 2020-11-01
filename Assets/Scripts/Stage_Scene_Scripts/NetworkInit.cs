@@ -18,7 +18,8 @@ public class NetworkInit : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.IsMessageQueueRunning = true;
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         switch (PhotonNetwork.CurrentRoom.PlayerCount)
         {
             case 1:
@@ -36,6 +37,7 @@ public class NetworkInit : MonoBehaviourPunCallbacks
             default: break;
         }
         PhotonNetwork.Instantiate("Player" + PhotonNetwork.CurrentRoom.PlayerCount.ToString(), player_position, Quaternion.identity, 0).name = "Player" + PhotonNetwork.CurrentRoom.PlayerCount.ToString() + "(Clone)";
+        GameObject.Find("Player" + PhotonNetwork.CurrentRoom.PlayerCount.ToString() + "(Clone)").transform.Find("Player_Camera").GetComponent<Camera>().enabled = true;
         game_info_text = "マッチメイク中…";
         Game_Center_Text = GameObject.Find("Game_Center_Text");
         Game_Center_Text.GetComponent<Text>().text = game_info_text;

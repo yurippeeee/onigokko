@@ -8,7 +8,7 @@ using Photon.Realtime;
 public class SyncVariableManager : MonoBehaviourPunCallbacks
 {
     public int player_exist_num = 13; //プレイヤー全員が減算命令を実行するため、4人×3人死亡+1人(勝者)=13
-    float damage = 0.34f;
+    float damage = 0.20f;
 
     void PlayerDead()
     {
@@ -30,7 +30,7 @@ public class SyncVariableManager : MonoBehaviourPunCallbacks
     void DamageMethod(string PlayerObjectName, PhotonMessageInfo info)
     {
         GameObject.Find(PlayerObjectName).transform.Find("HPUI").transform.Find("HPBar").GetComponent<Slider>().value -= damage;
-        if (GameObject.Find(PlayerObjectName).transform.Find("HPUI").transform.Find("HPBar").GetComponent<Slider>().value <= 0.31f)
+        if (GameObject.Find(PlayerObjectName).transform.Find("HPUI").transform.Find("HPBar").GetComponent<Slider>().value <= 0.19f)
         {
             //photonView.RequestOwnership();
             Destroy(GameObject.Find(PlayerObjectName).gameObject);

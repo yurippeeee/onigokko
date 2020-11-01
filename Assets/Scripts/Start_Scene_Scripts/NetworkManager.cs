@@ -16,6 +16,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();   //マスターサーバへ接続
         ROOM_LIST_from_Dropdown = GameObject.Find("UI").transform.Find("LoginUI").transform.Find("RoomList").GetComponent<Dropdown>();
         ROOM_NAME_from_Input_Field = GameObject.Find("UI").transform.Find("LoginUI").transform.Find("RoomName").GetComponent<InputField>();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 

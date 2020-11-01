@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpSpeed;
     public float rotateSpeed;
     public bool is_ogre = false;
+    float mouse_sensitivity = 2.5f;
 
     CharacterController CharacterController;
     Animator Animator;
@@ -25,20 +27,28 @@ public class PlayerMove : MonoBehaviour
         //右足のコライダーを取得
         RightFootCollider = transform.Find("Character1_Reference").transform.Find("Character1_Hips").transform.Find("Character1_RightUpLeg").transform.Find("Character1_RightLeg").transform.Find("Character1_RightFoot").transform.Find("Character1_RightToeBase").GetComponent<SphereCollider>();
         EnemyHit = transform.Find("Character1_Reference").transform.Find("Character1_Hips").transform.Find("Character1_RightUpLeg").transform.Find("Character1_RightLeg").transform.Find("Character1_RightFoot").transform.Find("Character1_RightToeBase").GetComponent<EnemyHit>();
-        RightFootCollider.enabled = false;
+        //RightFootCollider.enabled = false;
     }
 
     void Update()
     {
+        transform.Rotate(0, Input.GetAxis("Mouse X")*mouse_sensitivity, 0); 
         if (is_ogre == true)
         {
-            //Sを押すとHikick
-            if (Input.GetKeyDown(KeyCode.E))
+            if (!Animator.GetCurrentAnimatorStateInfo(0).IsName("Hikick"))
             {
-                Animator.SetBool("Hikick", true);
-                EnemyHit.attack_collision_flag = false;
-                RightFootCollider.enabled = true;
+                //Eを押すとHikick
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Animator.SetTrigger("Hikick");
+                    EnemyHit.attack_collision_flag = false;
+                    RightFootCollider.enabled = true;
+                }
             }
+        }
+        if (Animator.GetCurrentAnimatorStateInfo(0).IsName("Hikick"))
+        {
+
         }
         if (Input.GetKey(KeyCode.W))
         {
@@ -53,14 +63,6 @@ public class PlayerMove : MonoBehaviour
         {
 
         }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(0, rotateSpeed * -1, 0);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(0, rotateSpeed, 0);
-        }
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -68,8 +70,13 @@ public class PlayerMove : MonoBehaviour
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
+    }
+
+    void FixedUpdate()
+    {
         Vector3 globalDirection = transform.TransformDirection(moveDirection);
         CharacterController.Move(globalDirection * Time.deltaTime);
         Animator.SetBool("Run", moveDirection.z > 0.0f);
     }
 }
+
