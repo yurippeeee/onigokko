@@ -20,6 +20,11 @@ public class Timer : MonoBehaviourPunCallbacks
     int player_number=0;
     bool is_first_loop = true;
 
+    static readonly int SETTING_NEXT_OGRE = 0;
+    static readonly int RUNNING_GAME_TIMER = 1;
+    static readonly int STOPPING_GAME_TIMER = 2;
+    static readonly int END_GAME = 3;
+
     GameObject Game_Center_Text;
     GameObject[] player = new GameObject[4];
     GameObject Network_Init;
@@ -45,88 +50,86 @@ public class Timer : MonoBehaviourPunCallbacks
                 }
                 is_first_loop = false;
             }
-            switch (game_state)
+            
+            if(game_state == SETTING_NEXT_OGRE)
             {
-                case 0:
-                    player_number += 1;
-                    if (player_number > 3)
-                    {
-                        player_number = 0;
-                    }
-                    if (player[player_number] == false)
-                    {
-                        break;
-                    }
+                player_number += 1;
+                if (player_number > 3)
+                {
+                    player_number = 0;
+                }
+                if (player[player_number] == true)
+                {
                     player[player_number].GetComponent<PlayerMove>().is_ogre = true;
                     player[player_number].transform.Find("HPUI").transform.Find("is_ogre").GetComponent<Text>().text = "鬼";
                     player[player_number].GetComponent<CapsuleCollider>().enabled = false;
                     Destroy(player[player_number].GetComponent<Rigidbody>());
                     game_state = 1;
                     measure_time = 20;
-                    break;
+                }
+            }
+                    
+            else if(game_state == RUNNING_GAME_TIMER)
+            {
+                measure_time -= Time.deltaTime; //スタートしてからの秒数を格納
+                GetComponent<Text>().text = measure_time.ToString("F0");
+                if (GameObject.Find("Sync_Variable_Manager(Clone)").GetComponent<SyncVariableManager>().player_exist_num <= 1)
+                {
+                    Game_Center_Text.GetComponent<Text>().text = PhotonNetwork.PlayerList[player_number].NickName + "の勝ち!";
+                    GetComponent<Text>().text = "";
+                    measure_time = 3;
+                    game_state = 2;
+                    num_of_game_count = 0;
+                }
+                else if (measure_time < 0)
+                {
+                    GetComponent<Text>().text = "";
 
-                case 1:
-                    measure_time -= Time.deltaTime; //スタートしてからの秒数を格納
-                    GetComponent<Text>().text = measure_time.ToString("F0");
-                    if (GameObject.Find("Sync_Variable_Manager(Clone)").GetComponent<SyncVariableManager>().player_exist_num <= 1)
+                    measure_time = 3;
+                    game_state = 2;
+                    num_of_game_count -= 1;
+
+                    if (num_of_game_count <= 0)
                     {
-                        Game_Center_Text.GetComponent<Text>().text = PhotonNetwork.PlayerList[player_number].NickName+"の勝ち!";
-                        GetComponent<Text>().text = "";
-                        measure_time = 3;
-                        game_state = 2;
-                        num_of_game_count = 0;
+                        Game_Center_Text.GetComponent<Text>().text = "引き分け";
                     }
-                    else if (measure_time < 0)
+                    else
                     {
-                        GetComponent<Text>().text = "";
-
-                        measure_time = 3;
-                        game_state = 2;
-                        num_of_game_count -= 1;
-
-                        if (num_of_game_count <= 0)
-                        {
-                            Game_Center_Text.GetComponent<Text>().text = "引き分け";
-                        }
-                        else
-                        {
-                            Game_Center_Text.GetComponent<Text>().text = "鬼の交代";
-                        }
-
-                        player[player_number].transform.Find("HPUI").transform.Find("is_ogre").GetComponent<Text>().text = "";
-                        player[player_number].AddComponent<Rigidbody>();
-                        player[player_number].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                        player[player_number].GetComponent<PlayerMove>().is_ogre = false;
-                        player[player_number].GetComponent<Rigidbody>().isKinematic = false;
-                        player[player_number].GetComponent<CapsuleCollider>().enabled = true;
-
+                        Game_Center_Text.GetComponent<Text>().text = "鬼の交代";
                     }
-                    break;
-                case 2:
-                    measure_time -= Time.deltaTime; //スタートしてからの秒数を格納
-                    if (measure_time < 0)
+
+                    player[player_number].transform.Find("HPUI").transform.Find("is_ogre").GetComponent<Text>().text = "";
+                    player[player_number].AddComponent<Rigidbody>();
+                    player[player_number].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    player[player_number].GetComponent<PlayerMove>().is_ogre = false;
+                    player[player_number].GetComponent<Rigidbody>().isKinematic = false;
+                    player[player_number].GetComponent<CapsuleCollider>().enabled = true;
+
+                }
+            }
+
+            else if (game_state == STOPPING_GAME_TIMER)
+            {
+                measure_time -= Time.deltaTime; //スタートしてからの秒数を格納
+                if (measure_time < 0)
+                {
+                    Game_Center_Text.GetComponent<Text>().text = "";
+                    if (num_of_game_count <= 0)
                     {
-                        Game_Center_Text.GetComponent<Text>().text = "";
-                        if (num_of_game_count <= 0)
-                        {
-                            game_state = 3;
-                        }
-                        else
-                        {
-                            game_state = 0;
-                        }
+                        game_state = 3;
                     }
-                    break;
+                    else
+                    {
+                        game_state = 0;
+                    }
+                }
+            }
+            
+            else if (game_state == END_GAME)
+            {
+                PhotonNetwork.LeaveRoom();
+                SceneManager.LoadScene("Start_Scene");
 
-                
-
-                case 3:
-                    PhotonNetwork.LeaveRoom();
-                    SceneManager.LoadScene("Start_Scene");
-                    break;
-
-                default:
-                    break;
             }
         }
     }

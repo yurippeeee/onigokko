@@ -457,19 +457,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Resources
+    - Assets/Scripts/Stage_Scene_Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Resources
+  - Assets/Scripts/Stage_Scene_Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\tslab\Desktop\onigokko
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 275}
-    m_SelectedIDs: 68200000
-    m_LastClickedID: 8296
+    scrollPos: {x: 0, y: 323}
+    m_SelectedIDs: b8110000
+    m_LastClickedID: 4536
     m_ExpandedIDs: 000000008e10000074110000ec1200000614000002150000ce17000010190000a0190000361a0000741b0000d61b00000e1c0000641e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: aed9ffffd0d9ffffa6dcffffc8dcffff66ddffff8addffff60e0ffff8ae0ffff36f7ffff58f7ffff32faffff58faffffdcfbffff
+      m_ExpandedIDs: 5cf7ffff7ef7ffff58faffff7efaffffdcfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
