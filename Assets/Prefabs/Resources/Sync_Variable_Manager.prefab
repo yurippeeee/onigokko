@@ -66,3 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1b9aeb7373f1345965f41db0ec47a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_exist_num: 13
+  timer_start_sync: 0
+  enemy_hit_sound: {fileID: 8300000, guid: 83c1daad549b44047b18e37cc62282b7, type: 3}
+  attack_sound: {fileID: 8300000, guid: 586ce5df7375f544eb720ff268c67e1b, type: 3}
+  is_item_grab: 0

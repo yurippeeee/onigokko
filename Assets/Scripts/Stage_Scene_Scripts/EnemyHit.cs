@@ -14,7 +14,7 @@ public class EnemyHit : MonoBehaviourPunCallbacks
     {
         GetComponent<SphereCollider>().enabled = false;
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player")) 
         {
             if(attack_collision_flag == false)
             {

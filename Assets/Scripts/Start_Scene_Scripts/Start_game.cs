@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Start_game : MonoBehaviourPunCallbacks
 {
     Text RoomName;
     Text PlayerName;
+    public AudioClip click_sound;
+    public static string player_name;
 
     void Start()
     {
@@ -26,7 +29,17 @@ public class Start_game : MonoBehaviourPunCallbacks
     
     public void JoinRoom_and_ChangeScene()
     {
-        PhotonNetwork.LocalPlayer.NickName = PlayerName.text;
+        RoomOption.CustomRoomProperties = new Hashtable()
+        { { "Player1", false },
+          { "Player2", false },
+          { "Player3", false },
+          { "Player4", false },
+          { "is_entering", 1 }};
+
+        player_name = PlayerName.text;
+        AudioSource.PlayClipAtPoint(click_sound, transform.position);
         PhotonNetwork.JoinOrCreateRoom(RoomName.text, RoomOption, TypedLobby.Default);
+        
+        
     }
 }
